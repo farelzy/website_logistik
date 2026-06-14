@@ -25,7 +25,7 @@ class BlogController extends Controller
         }
 
         $posts      = $query->paginate(6);
-        $categories = BlogPost::published()->distinct()->pluck('category');
+        $categories = BlogPost::published()->reorder()->distinct()->pluck('category');
 
         return view('frontend.blog.index', compact('posts', 'categories'));
     }
