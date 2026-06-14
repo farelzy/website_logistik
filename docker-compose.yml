@@ -12,6 +12,8 @@ services:
       - ./:/var/www
     networks:
       - swiftlogix
+    depends_on:
+      - db
 
   web:
     image: nginx:alpine
@@ -24,6 +26,8 @@ services:
       - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks:
       - swiftlogix
+    depends_on:
+      - app
 
   db:
     image: mysql:8.0
