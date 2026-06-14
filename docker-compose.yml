@@ -1,0 +1,48 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: swiftlogix-app
+    container_name: swiftlogix-app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - ./:/var/www
+    networks:
+      - swiftlogix
+
+  web:
+    image: nginx:alpine
+    container_name: swiftlogix-web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/var/www
+      - ./nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - swiftlogix
+
+  db:
+    image: mysql:8.0
+    container_name: swiftlogix-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE:-swiftlogix}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_USER: ${DB_USERNAME:-swiftlogix_user}
+    volumes:
+      - swiftlogix-mysql:/var/lib/mysql
+    networks:
+      - swiftlogix
+
+networks:
+  swiftlogix:
+    driver: bridge
+
+volumes:
+  swiftlogix-mysql:
+    driver: local
