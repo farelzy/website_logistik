@@ -1,0 +1,399 @@
+/* ============================================
+   SwiftLogix - Admin CSS
+   ============================================ */
+
+:root {
+    --navy:    #0D1B2A;
+    --navy-2:  #1a2e45;
+    --orange:  #F4A025;
+    --sidebar-w: 260px;
+    --topbar-h: 64px;
+}
+
+* { box-sizing: border-box; }
+
+body.admin-body {
+    font-family: 'Inter', sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- SIDEBAR ---- */
+.admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--sidebar-w);
+    height: 100vh;
+    background: var(--navy);
+    z-index: 1000;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.1) transparent;
+}
+
+.admin-sidebar.collapsed {
+    width: 72px;
+}
+
+.admin-sidebar.collapsed .sidebar-user,
+.admin-sidebar.collapsed .nav-group-label,
+.admin-sidebar.collapsed .nav-item span,
+.admin-sidebar.collapsed .sidebar-brand span {
+    display: none;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1.25rem 1rem;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    min-height: var(--topbar-h);
+}
+
+.sidebar-user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 0.5rem;
+}
+
+.user-avatar {
+    width: 38px;
+    height: 38px;
+    background: var(--orange);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+.user-name {
+    font-weight: 600;
+    color: white;
+    font-size: 0.87rem;
+    white-space: nowrap;
+}
+
+.user-role {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+}
+
+.sidebar-nav {
+    padding: 0.5rem 0.75rem;
+}
+
+.nav-group-label {
+    font-size: 0.68rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 0.75rem 0.5rem 0.3rem;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.75rem;
+    color: rgba(255,255,255,0.65);
+    border-radius: 10px;
+    font-size: 0.87rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    margin-bottom: 2px;
+    white-space: nowrap;
+}
+
+.nav-item i {
+    width: 20px;
+    text-align: center;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.nav-item:hover {
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+.nav-item.active {
+    background: var(--orange);
+    color: white;
+    box-shadow: 0 4px 15px rgba(244,160,37,0.35);
+}
+
+/* ---- MAIN CONTENT ---- */
+.admin-main {
+    margin-left: var(--sidebar-w);
+    min-height: 100vh;
+    transition: all 0.3s ease;
+}
+
+.admin-main.expanded {
+    margin-left: 72px;
+}
+
+/* ---- TOP BAR ---- */
+.admin-topbar {
+    height: var(--topbar-h);
+    background: white;
+    border-bottom: 1px solid #e9ecef;
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.breadcrumb-area .breadcrumb-item a {
+    color: var(--orange);
+    text-decoration: none;
+    font-size: 0.87rem;
+}
+
+/* ---- CONTENT AREA ---- */
+.admin-content {
+    padding: 1.75rem;
+}
+
+/* ---- PAGE HEADER ---- */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-header h4 {
+    font-weight: 700;
+    color: var(--navy);
+    margin: 0;
+}
+
+/* ---- STAT CARDS ---- */
+.stat-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.stat-card-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.stat-card-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+}
+
+.stat-card-label {
+    font-size: 0.83rem;
+    color: #6c757d;
+}
+
+/* ---- TABLE ---- */
+.admin-table {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid #e9ecef;
+}
+
+.admin-table table { margin: 0; }
+
+.admin-table thead th {
+    background: #f8f9fa;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.9rem 1.25rem;
+    white-space: nowrap;
+}
+
+.admin-table tbody td {
+    padding: 0.9rem 1.25rem;
+    vertical-align: middle;
+    border-color: #f0f2f5;
+    font-size: 0.87rem;
+}
+
+.admin-table tbody tr:hover { background: #fafbfc; }
+.admin-table tbody tr:last-child td { border-bottom: none; }
+
+/* ---- FORM CARD ---- */
+.form-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid #e9ecef;
+}
+
+.form-card .form-label {
+    font-weight: 600;
+    font-size: 0.87rem;
+    color: var(--navy);
+}
+
+.form-card .form-control,
+.form-card .form-select {
+    border-radius: 10px;
+    border: 1.5px solid #e9ecef;
+    padding: 0.65rem 1rem;
+    font-size: 0.87rem;
+    transition: all 0.2s;
+}
+
+.form-card .form-control:focus,
+.form-card .form-select:focus {
+    border-color: var(--orange);
+    box-shadow: 0 0 0 0.2rem rgba(244,160,37,0.15);
+}
+
+/* ---- BUTTONS ---- */
+.btn-orange {
+    background: var(--orange);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.87rem;
+    transition: all 0.2s;
+}
+.btn-orange:hover {
+    background: #e8901a;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(244,160,37,0.3);
+}
+
+.btn-navy {
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 0.55rem 1.25rem;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.87rem;
+    transition: all 0.2s;
+}
+.btn-navy:hover {
+    background: var(--navy-2);
+    color: white;
+}
+
+/* Action buttons */
+.btn-action {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    border: none;
+    transition: all 0.2s;
+}
+.btn-action:hover { transform: translateY(-1px); }
+
+/* ---- BADGE ---- */
+.badge {
+    font-weight: 600;
+    padding: 0.35em 0.65em;
+    border-radius: 6px;
+    font-size: 0.75rem;
+}
+
+/* ---- ALERT ---- */
+.alert {
+    border-radius: 12px;
+    border: none;
+    font-size: 0.9rem;
+}
+
+/* ---- CARD ---- */
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 768px) {
+    .admin-sidebar { transform: translateX(-100%); }
+    .admin-sidebar.mobile-open { transform: translateX(0); }
+    .admin-main { margin-left: 0; }
+}
+
+/* ---- TIMELINE (Admin Shipment) ---- */
+.admin-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+.admin-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0.55rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e9ecef;
+}
+.admin-timeline-item {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+.admin-timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.6rem;
+    top: 0.2rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--orange);
+    border: 2px solid var(--orange);
+    z-index: 1;
+    box-shadow: 0 0 0 3px rgba(244,160,37,0.2);
+}
